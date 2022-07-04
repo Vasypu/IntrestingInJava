@@ -39,7 +39,7 @@ class Woodwind extends WindTwo {
     void adjust() { System.out.println("Adjusting Woodwind"); }
 }
 
-public class Music3 {
+public class Music_2 {
     public static void tune(InstrumentTwo i) {
         i.play("Rock");
     }
