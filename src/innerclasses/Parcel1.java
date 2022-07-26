@@ -1,6 +1,14 @@
-package Innerclasses;
+package innerclasses;
 
-import Innerclasses.Parcel1.Contents;
+/**
+ *  Внутренние классы.
+ *
+ *  Внутренние классы имеют доступ к полям, в том числе private. Так
+ *  внутренний класс SequenceSelector имеет доступ к private массиву
+ *  objects. Объект внутреннего класса можно создавать только в
+ *  сочетании с объектом внешнего класса, если внутренний класс не
+ *  является статическим.
+ */
 
 public class Parcel1 {
     class Contents {
@@ -23,6 +31,8 @@ public class Parcel1 {
     public static void main(String[] args) {
         Parcel1 p = new Parcel1();
         p.ship("Тасмания");
+        Parcel1.Contents contents = p.new Contents();  // создание объекта внутреннего класса
+        System.out.println(contents.value());
     }
 }
 

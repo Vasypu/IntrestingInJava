@@ -1,4 +1,4 @@
-package final_class_and_methods;
+package final_classes_and_methods;
 
 // Пустые константы, поле final в классе может быть разным для каждого объекта,
 // и при этом оно сохраняет свою неизменность

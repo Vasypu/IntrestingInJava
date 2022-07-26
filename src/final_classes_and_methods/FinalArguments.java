@@ -1,4 +1,4 @@
-package final_class_and_methods;
+package final_classes_and_methods;
 
 class Gizmo {
     public void spin() {}

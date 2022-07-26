@@ -1,4 +1,4 @@
-package final_class_and_methods;
+package final_classes_and_methods;
 
 /**
  *  private метод нельзя переопределить так как он недоступен и невидим для окуржающего мира.
