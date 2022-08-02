@@ -11,7 +11,7 @@ public class Soap {
 }
 
 class Bath {
-    private String                                       //Инициализация в точке оперделения
+    private String                                       //Инициализация в точке определения
     s1 = "Счастливый",
     s2 = "Счастливый",
     s3, s4;
@@ -24,7 +24,7 @@ class Bath {
         toy = 3.14f;
         castille = new Soap();
     }
-    {i = 47;}                                           //Инициализация экземляра
+    {i = 47;}                                           //Инициализация экземпляра
 
     @Override
     public String toString() {

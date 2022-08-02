@@ -1,5 +1,9 @@
 package initialization;
 
+/**
+ *  Секция инициализации выполняется раньше конструкторов.
+ */
+
 public class Mug {
     public Mug(int marker) {
         System.out.println("Mug(" + marker + ")");
@@ -32,8 +36,3 @@ class Mugs {
         System.out.println("new Mugs(1) завершено");
     }
 }
-
-/**
- * Секция инициализации выполняется раньше конструкторов.
- */
-

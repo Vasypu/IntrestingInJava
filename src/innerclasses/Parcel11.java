@@ -3,6 +3,7 @@ package innerclasses;
 /**
  *  Вложенные классы.
  *
+ *  Вложенный класс это внутренний класс с ключевым словом static.
  *  Вложенный класс отличается внутреннего тремя вещами:
  *  - нельзя обратиться к полям внешнего класса из вложенного класса
  *  - для создания объекта статического (вложенного) класса не нужен объект
@@ -17,6 +18,7 @@ public class Parcel11 {
 //        private int s = d + 2;                              // нельзя обратиться к полям внешнего класса из вложенного класса
         public int value() { return i; }
     }
+
     protected static class ParcelDestination implements Destination {
         private String lable;
         private ParcelDestination(String whereTo) {
