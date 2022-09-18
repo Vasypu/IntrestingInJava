@@ -50,7 +50,7 @@ public class LinkedListExample {
         System.out.println("После offer(): " + pets);
         pets.add(petCreator.randomPet());
         System.out.println("После add(): " + pets);
-        pets.addLast(new Humster());
+        pets.addLast(new Hamster());
         System.out.println("После addLast(): " + pets);
         System.out.println("pets.removeLast(): " + pets.removeLast());
     }

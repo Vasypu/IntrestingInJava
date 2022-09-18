@@ -46,25 +46,25 @@ class Pet {
 class Dog extends Pet {
     public Dog(String name) { super(name);}
     public Dog() { super(); }
-    public String toString() { return "Dog"; }
+    public String toString() { return "Dog " + name; }
 }
 
 class Mutt extends Dog {
     public Mutt(String name) { super(name);}
     public Mutt() { super(); }
-    public String toString() { return "Mutt"; }
+    public String toString() { return "Mutt " + name; }
 }
 
 class Pug extends Dog {
     public Pug(String name) { super(name);}
     public Pug() { super(); }
-    public String toString() { return "Pug"; }
+    public String toString() { return "Pug " + name; }
 }
 
 class Cat extends Pet {
     public Cat(String name) { super(name);}
     public Cat() { super(); }
-    public String toString() { return "Cat"; }
+    public String toString() { return "Cat " + name; }
 }
 
 class EgyptianMau extends Cat {
@@ -82,7 +82,7 @@ class Manx extends Cat {
 class Cymric extends Manx {
     public Cymric(String name) { super(name);}
     public Cymric() { super(); }
-    public String toString() { return "Cymric"; }
+    public String toString() { return "Cymric " + name; }
 }
 
 class Rodent extends Pet {
@@ -94,7 +94,7 @@ class Rodent extends Pet {
 class Rat extends Rodent {
     public Rat(String name) { super(name);}
     public Rat() { super(); }
-    public String toString() { return "Rat"; }
+    public String toString() { return "Rat " + name; }
 }
 
 class Mouse extends Rodent {
@@ -103,8 +103,8 @@ class Mouse extends Rodent {
     public String toString() { return "Mouse"; }
 }
 
-class Humster extends Rodent {
-    public Humster(String name) { super(name);}
-    public Humster() { super(); }
-    public String toString() { return "Humster"; }
+class Hamster extends Rodent {
+    public Hamster(String name) { super(name);}
+    public Hamster() { super(); }
+    public String toString() { return "Humster " + name; }
 }

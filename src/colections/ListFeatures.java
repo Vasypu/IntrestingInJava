@@ -30,7 +30,7 @@ public class ListFeatures {
         };
         List<Pet> pets = petCreator.arrayList(7);
         System.out.println("1: " + pets);
-        Humster h = new Humster();
+        Hamster h = new Hamster();
         pets.add(h);                                            // Автоматическое изменение размера
         System.out.println("2: " + pets);
         System.out.println("3: " + pets.contains(h));
