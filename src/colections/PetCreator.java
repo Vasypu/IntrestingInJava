@@ -41,6 +41,7 @@ class Pet {
         id++;
     }
     public Pet() { id++; }
+    public int id() { return id; }
 }
 
 class Dog extends Pet {
