@@ -59,30 +59,41 @@ public class Rethrowing {
     }
 }
 
+/**
+ *  Также возможно повторно возбудить исключение, отличающееся от изначально перехваченного.
+ *  Если вы это делаете, получается такой же эффект, как и при использовании метода
+ *  fillInStackTrace(), — информация о месте зарождения исключения теряется и остается только
+ *  то, что относится к новой команде throw.
+ *  О последнем исключении известно только то, что оно возбуждено из внутреннего блока try,
+ *  но не из метода f().
+ */
+
 class OneException extends Exception {
     public OneException(String s) { super(s); }
 }
 class TwoException extends Exception {
     public TwoException(String s) { super(s); }
 }
-/*class RethrowNew {
+class RethrowNew {
     public static void f() throws OneException {
         System.out.println("Создание исключения в f()");
-        throw new OneException("n3 f()");
+        throw new OneException("из f()");
     }
+
     public static void main(String[] args) {
         try {
-            f();
-        } catch (OneException e) {
-            System.out.println(
-                    "Перехвачено во внутреннем блоке try, e.printStackTrace()");
-            e.printStackTrace(System.out);
-            throw new TwoException("n3 внутреннего блока try");
+            try {
+                f();
+            } catch (OneException e) {
+                System.out.println(
+                        "Перехвачено во внутреннем блоке try, e.printStackTrace()");
+                e.printStackTrace(System.out);
+                throw new TwoException("из внутреннего блока try");
+            }
         } catch (TwoException e) {
             System.out.println(
                     "Перехвачено во внешнем блоке try, e.printStackTrace()");
             e.printStackTrace(System.out);
         }
     }
-}*/
-
+}
