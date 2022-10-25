@@ -51,18 +51,25 @@ public class Receipt {
     }
 }
 
+//  Преобразования Formatter
+//  преобразование b работает для всех переменных. Хотя оно действительно для всех типов аргументов,
+//  оно может работать не так, как вы ожидаете. Для примитивов boolean или объектов Boolean
+//  результат будет равен true или false в зависимости от значения, но для любого другого аргумента,
+//  отличного от null, результат всегда равен true. Даже для числового значения 0, которое является
+//  синонимом false, будет получено значение true;
 class Conversion {
     public static void main(String[] args) {
         Formatter f = new Formatter(System.out);
+
         char u = 'a';
-        System.out.println("u = ’a'");
+        System.out.println("u = 'a'");
         f.format("s: %s\n", u);
         // f.format("d: %d\n'\ u);
         f.format("c: %c\n", u);
         f.format("b: %b\n", u);
         // f.format("f: %f\n", u);
         // f.format("e: %e\n", u);
-        // f.format(''x: %x\n", u);
+        // f.format("x: %x\n", u);
         f.format("h: %h\n", u);
 
         int v = 121;
@@ -75,6 +82,7 @@ class Conversion {
         // f.format("f: %f\n", v);
         f.format("x: %x\n", v);
         f.format("h: %h\n", v);
+
         BigInteger w = new BigInteger("50000000000000");
         System.out.println("w = new BigInteger(\"50000000000000\")");
         f.format("d: %d\n", w);
@@ -101,7 +109,7 @@ class Conversion {
         // f.format("d: %d\n", у);
         // f.format("c: %c\n\ у);
         f.format("b: %b\n", у);
-        f.format("s; %s\n", у);
+        f.format("s: %s\n", у);
         // f.format("f: %f\n", у);
         // f.format("e: %e\n% у);
         // f.format("x: %x\n", у);
