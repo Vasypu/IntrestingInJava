@@ -5,11 +5,10 @@ import java.util.regex.Pattern;
 
 public class TheReplacements {
     public static void main(String[] args) {
-//        String s = TextFile.read("TheReplacements.java");
         String s = "Here's а block of text to use as input to\n" +
-                "the regular expression matcher. Note that we’ll\n " +
-                "first extract the block of text by looking for\n " +
-                "the special delimiters, then process the\n " +
+                "the regular expression matcher.  Note that we’ll\n " +
+                "first extract the block of text by  looking for\n " +
+                "the special delimiters,  then process the\n " +
                 "extracted block.";
         // Поиск блока текста, заключенного в специальные комментарии:
         Matcher mInput = Pattern.compile("/\\*!(.*)!\\*/", Pattern.DOTALL).matcher(s);
@@ -25,8 +24,9 @@ public class TheReplacements {
         StringBuffer sbuf = new StringBuffer();
         Pattern p = Pattern.compile("[aeiou]");
         Matcher m = p.matcher(s);
-        // Обработка информации find при выполнении замены: while(m.find())
-        m.appendReplacement(sbuf, m.group().toUpperCase());
+        // Обработка информации find при выполнении замены:
+        while (m.find())
+            m.appendReplacement(sbuf, m.group().toUpperCase());
         // Присоединение оставшегося текста:
         m.appendTail(sbuf);
         System.out.println(sbuf);
