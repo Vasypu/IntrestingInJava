@@ -3,6 +3,17 @@ package strings;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ *  start() и end()
+ *  После успешного поиска совпадения метод start() возвращает начальный индекс предыдущего
+ *  совпадения, а метод end () возвращает индекс последнего символа совпадения, увеличенный
+ *  на 1. Вызов start() или end() после неуспешной операции поиска совпадения (или до ее начала)
+ *  порождает исключение IllegalStateException.
+ *  find() находит совпадение регулярного выражения в любой позиции входных данных. И если для
+ *  matches() совпадение успешно только в том случае, если с регулярным выражением совпадают
+ *  все входные данные, в случае lookingAt() достаточно совпадения только начальной части
+ *  входных данных.
+ */
 public class StartEnd {
     public static String input =
             "As long as there is injustice, whenever a\n" +
@@ -17,7 +28,7 @@ public class StartEnd {
         Display(String regex) { this.regex = regex; }
         void display(String message) {
             if (!regexPrinted) {
-                System.out.println(regex);
+                System.out.println("regex : " + regex);
                 regexPrinted = true;
             }
             System.out.println(message);
@@ -32,10 +43,9 @@ public class StartEnd {
             d.display("find() '" + m.group() +
                     "' start = " + m.start() + " end = " + m.end());
         if (m.lookingAt()) // Вызов reset() не нужен
-            d.display("lookingAt() start = н + m.start() + '' end = " + m.end());
+            d.display("lookingAt() start = " + m.start() + " end = " + m.end());
         if (m.matches()) // Вызов reset() не нужен
-            d.display("matches() start = "
-                    + m.start() + " end = " + m.end());
+            d.display("matches() start = "+ m.start() + " end = " + m.end());
     }
 
     public static void main(String[] args) {
