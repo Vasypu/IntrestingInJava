@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  * Флаги шаблонов
  * <p>
  * Альтернативный метод compile() получает флаги, управляющие процессом поиска совпадений:
- * Pattern Pattern.compile(String regex, int flag)
+ * Pattern.compile(String regex, int flag)
  * Флаги также могут объединяться операцией | (ИЛИ)
  */
 public class ReFlags {

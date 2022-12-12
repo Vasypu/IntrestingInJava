@@ -62,7 +62,7 @@ class Turtle {
 
 //  Статический метод String.format() получает те же аргументы, что и метод format()
 //  класса Formatter, но возвращает String. Он может пригодиться в ситуации, в которой
-//  format () нужно вызвать всего один раз.
+//  format() нужно вызвать всего один раз.
 class DatabaseException extends Exception {
     public DatabaseException(int transactionID, int queryID, String message) {
         super(String.format("(t%d, q%d) %s", transactionID, queryID, message));
