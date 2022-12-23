@@ -44,7 +44,7 @@ public class ToyTest {
         System.out.println("Каноническое имя : " + cc.getCanonicalName());
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException {
         Class c = null;
         try {
             c = Class.forName("RTTI.FancyToy");
