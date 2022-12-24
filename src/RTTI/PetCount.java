@@ -56,3 +56,10 @@ public class PetCount {
         countPets(new ForNameCreator());
     }
 }
+
+// мы можем легко протестировать LiteralPetCreator (через Фасад Pets):
+class PetCount2 {
+    public static void main(String[] args) {
+        PetCount.countPets(Pets.creator);
+    }
+}
