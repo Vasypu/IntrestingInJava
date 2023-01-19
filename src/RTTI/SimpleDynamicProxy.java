@@ -27,12 +27,12 @@ class SimpleProxy implements Interface {
     private Interface proxied;
     public SimpleProxy(Interface proxied) { this.proxied = proxied; }
     public void doSomething() {
-        System.out.println("SimpleProxy doSomething");
+        System.out.println("SimpleProxy doSomething");      // промежуточная операция
         proxied.doSomething();
     }
 
     public void somethingElse(String arg) {
-        System.out.println("SimpleProxy somethingElse " + arg);
+        System.out.println("SimpleProxy somethingElse " + arg); // промежуточная операция
         proxied.somethingElse(arg);
     }
 }
@@ -78,9 +78,9 @@ public class SimpleDynamicProxy {
         consumer(real);
         // Insert a proxy and call again:
         Interface proxy = (Interface) Proxy.newProxyInstance(
-                Interface.class.getClassLoader(),
-                new Class[]{ Interface.class },
-                new DynamicProxyHandler(real));
+                Interface.class.getClassLoader(),   // загрузчик классов (как правило, можно просто передать загрузчик из уже загруженного объекта)
+                new Class[]{ Interface.class },     // список интерфейсов (не классов и не абстрактных классов), которые должны реализоваться заместителем
+                new DynamicProxyHandler(real));     // обработчик вызовов (реализация интерфейса InvocationHandler)
         consumer(proxy);
     }
 }
