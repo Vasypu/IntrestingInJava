@@ -3,6 +3,9 @@ package generics;
 import java.util.Iterator;
 import java.util.Random;
 
+/**
+ * Обобщенные интерфейсы
+ */
 interface Generator<T> { T next(); }
 
 class Coffee {
@@ -30,12 +33,12 @@ public class CoffeeGenerator implements Generator<Coffee>, Iterable<Coffee> {
             return (Coffee)
                     types[rand.nextInt(types.length)].newInstance();
             // Сообщить программисту об ошибках во время выполнения:
-        } catch(Exception e){
+        } catch(Exception e) {
             throw new RuntimeException(e);
         }
     }
-    class CoffeeIterator implements Iterator<Coffee> {
-        int count = size;
+    class CoffeeIterator implements Iterator<Coffee> {  // CoffeeGenerator также реализует интерфейс Iterable,
+        int count = size;                               // что позволяет использовать его в конструкции foreach
         public boolean hasNext() { return count > 0; }
         public Coffee next() {
             count--;
@@ -54,5 +57,46 @@ public class CoffeeGenerator implements Generator<Coffee>, Iterable<Coffee> {
             System.out.println(gen.next());
         for(Coffee c : new CoffeeGenerator(5))
             System.out.println(c);
+    }
+}
+
+// Вторая реализация Generator<T> — на этот раз предназначенная для
+// генерирования чисел Фибоначчи:
+class Fibonacci implements Generator<Integer> {
+    private int count = 0;
+    public Integer next() { return fib(count++); }
+    private int fib(int n) {
+        if(n < 2) return 1;
+        return fib(n - 2) + fib(n - 1);
+    }
+    public static void main(String[] args) {
+        Fibonacci gen = new Fibonacci();
+        for(int i = 0; i < 18; i++)
+            System.out.print(gen.next() + " ");
+    }
+}
+
+// Создадим адаптер, предоставляющий нужный интерфейс. Существуют разные способы реализации
+// адаптеров. Например, для создания адаптируемого класса можно применить наследование.
+// Чтобы использовать IterableFibonacci в конструкции foreach, мы передаем конструктору
+// границу, чтобы метод hasNext() знал, когда возвращать false.
+class IterableFibonacci extends Fibonacci implements Iterable<Integer> {
+    private int n;
+    public IterableFibonacci(int count) { n = count; }
+    public Iterator<Integer> iterator() {
+        return new Iterator<Integer>() {
+            public boolean hasNext() { return n > 0; }
+            public Integer next() {
+                n --;
+                return IterableFibonacci.this.next();
+            }
+            public void remove() { // Не реализован
+                throw new UnsupportedOperationException();
+            }
+        };
+    }
+    public static void main(String[] args){
+        for (int i : new IterableFibonacci(18))
+            System.out.print(i + " ");
     }
 }
