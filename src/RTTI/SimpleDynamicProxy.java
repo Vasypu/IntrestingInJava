@@ -1,5 +1,9 @@
 package RTTI;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
 /**
  *  Динамические заместители
  *  <p>
@@ -8,10 +12,6 @@ package RTTI;
  *  операций — обычно подразумевающих взаимодействие с «настоящим» объектом, поэтому заместитель чаще
  *  всего выполняет функции посредника.
  */
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 interface Interface {
     void doSomething();

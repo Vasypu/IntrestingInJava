@@ -1,5 +1,8 @@
 package RTTI;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  *  Метод Class.isInstance() предоставляет возможность динамической проверки типа объекта. С помощью этого
  *  метода в примере PetCount наконец-то можно будет избавиться от громоздких конструкций instanceof.
@@ -8,9 +11,6 @@ package RTTI;
  *  При этом используется класс MapData, который получает Iterable (контейнер allTypes) и константу
  *  (нуль в данном случае) и заполняет карту ключами из allTypes, ассоциированными со значением 0.
  */
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class PetCount3 {
     static class PetCounter extends LinkedHashMap<Class<? extends Pet>,Integer> {

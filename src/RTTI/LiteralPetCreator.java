@@ -1,5 +1,7 @@
 package RTTI;
 
+import java.util.*;
+
 /**
  * B Java есть еще один способ получить ссылку на объект Class — посредством литерала class.
  * В рассмотренной программе мы бы получили ее таким образом: Gum.class;
@@ -8,8 +10,6 @@ package RTTI;
  * <p>
  * Если переписать PetCreator с использованием литералов class, программа получается более компактной.
  */
-
-import java.util.*;
 
 public class LiteralPetCreator extends PetCreator {
 // Блок try не нужен.

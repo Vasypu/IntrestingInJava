@@ -1,5 +1,12 @@
 package RTTI;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  *  Null-объекты
  *  <p>
@@ -10,13 +17,6 @@ package RTTI;
  *  Robot, для которого нужен заместитель. Заместитель выполняет требования к интерфейсам Robot
  *  и Null и предоставляет конкретное имя замещаемого типа.
  */
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 interface Operation {
     String description();

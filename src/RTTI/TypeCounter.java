@@ -1,5 +1,8 @@
 package RTTI;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *  Рекурсивный подсчет
  *  <p>
@@ -12,9 +15,6 @@ package RTTI;
  *  isAssignableFrom() проверяет во время выполнения, что переданный объект действительно принадлежит
  *  нужной иерархии
  */
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class TypeCounter extends HashMap<Class<?>,Integer> {
     private Class<?> baseType;

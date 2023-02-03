@@ -1,5 +1,8 @@
 package RTTI;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *  Для ослабления ограничений при использовании параметризованных ссылок на Class применяют метасимвол ?,
  *  который является частью обобщенных типов java и означает «что угодно».
@@ -16,9 +19,6 @@ package RTTI;
  *  а компилятору этот класс известен во время компиляции — в данном случае Toy.class, а не «какой-то суперкласс
  *  FancyToy».
  */
-
-import java.util.ArrayList;
-import java.util.List;
 
 class CountedInteger {
     private static long counter;

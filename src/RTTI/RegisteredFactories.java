@@ -1,14 +1,14 @@
 package RTTI;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  *  Фабрика.
  *  <p>
  *  Используется фабричный метод create() для создания дочерних объектов Part.
  */
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 // Параметр-тип T позволяет create() возвращать разные типы для разных реализаций Factory.
 interface Factory<T> { T create(); }

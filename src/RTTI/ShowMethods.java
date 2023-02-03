@@ -1,5 +1,9 @@
 package RTTI;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.util.regex.Pattern;
+
 /**
  *  Если точный тип объекта неизвестен, RTTI сообщит вам его. Однако в этом случае существуют ограничения:
  *  тип должен быть известен еще во время компиляции программы, иначе определить его с помощью RTTI и сделать
@@ -19,10 +23,6 @@ package RTTI;
  *  между традиционным RTTI и отражением в том, что при использовании RTTI файл .class открывается и изучается
  *  компилятором.
  */
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.util.regex.Pattern;
 
 // программа выводит методы и конструкторы переданного класса
 public class ShowMethods {

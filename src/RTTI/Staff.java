@@ -1,5 +1,7 @@
 package RTTI;
 
+import java.util.ArrayList;
+
 /**
  *  Null-объекты
  *  <p>
@@ -11,8 +13,6 @@ package RTTI;
  *  объекта, который он «изображает», но возвращающего значения, указывающие на отсутствие
  *  «настоящего» объекта
  */
-
-import java.util.ArrayList;
 
 interface Null {}
 

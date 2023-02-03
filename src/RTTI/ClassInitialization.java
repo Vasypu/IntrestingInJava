@@ -1,5 +1,7 @@
 package RTTI;
 
+import java.util.Random;
+
 /**
  * B Java есть еще один способ получить ссылку на объект Class — посредством литерала class. В рассмотренной
  * программе мы бы получили ее таким образом:
@@ -25,8 +27,6 @@ package RTTI;
  * компоновки (для выделения памяти) и инициализации (для инициализации выделенной памяти), как мы видим на примере
  * Initable2.staticNonFinal.
  */
-
-import java.util.Random;
 
 class Initable {
     static final int staticFinal = 47;

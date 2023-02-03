@@ -1,12 +1,12 @@
 package RTTI;
 
+import java.lang.reflect.Field;
+
 /**
  *
  *  final-поля действительно защищены от изменения. Исполнительная система без
  *  возражений принимает любые попытки изменения, но при этом ничего не происходит.
  */
-
-import java.lang.reflect.Field;
 
 class WithPrivateFinalField {
     private int i = 1;

@@ -1,5 +1,10 @@
 package RTTI;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 /**
  * Абстрактный метод getTypes() обращается к производному классу для получения контейнера
  * List объектов Class (вариация на тему паттерна проектирования «Шаблонный метод»). Учтите,
@@ -8,11 +13,6 @@ package RTTI;
  * List и использует выбранный объект Class для создания нового экземпляра этого класса
  * методом Class.newInstance().
  */
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
 
 abstract class PetCreator {
     private static Random rand = new Random(47);

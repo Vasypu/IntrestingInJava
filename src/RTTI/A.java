@@ -1,5 +1,8 @@
 package RTTI;
 
+import RTTI.packageaccess.HiddenC;
+import java.lang.reflect.Method;
+
 /**
  *  Интерфейсы и информация типов
  *  <p>
@@ -8,9 +11,6 @@ package RTTI;
  *  цели, но информация типа позволяет обойти это ограничение — интерфейсы не обеспечивают
  *  стопроцентной гарантии снижения связности.
  */
-
-import RTTI.packageaccess.HiddenC;
-import java.lang.reflect.Method;
 
 public interface A { void f(); }
 

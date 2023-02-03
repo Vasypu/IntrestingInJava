@@ -1,5 +1,8 @@
 package RTTI;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * Метод loader() создает контейнер List с объектами Class, используя метод Class. forName(). При этом
  * может быть возбуждено исключение classNotFoundException, что вполне логично, так как передаваемая
@@ -11,9 +14,6 @@ package RTTI;
  * в блок статической инициализации, потому что аннотация @SuppressWarnings не может размещаться
  * непосредственно в блоке статической инициализации.
  */
-
-import java.util.List;
-import java.util.ArrayList;
 
 public class ForNameCreator extends PetCreator {
     private static List<Class<? extends Pet>> types = new ArrayList<Class<? extends Pet>>();
