@@ -20,14 +20,14 @@ public class SuperTypeWildcards {
     static void writeTo(List<? super Apple> apples) {
         apples.add(new Apple());
         apples.add(new Jonathan());
-// apples.add(new Fruit()); // Ошибка
+//        apples.add(new Fruit()); // Ошибка
     }
 }
 
 // В fl() мы видим, что вызов работает нормально — при условии, что в List<Apple> помещаются только объекты Apple.
 // Однако метод writeExact() не позволяет поместить Apple в List<Fruit>, хотя вы и знаете, что это возможно.
 // B методе writeWithWildcard() аргумент имеет тип List<? super T>, тaк чтo List coдepжит конкретный тип, производный от T;
-// следовательно, в аргументе методов List можно безопасно передать т или любой тип, производный от т. В этом можно убедиться
+// следовательно, в аргументе методов List можно безопасно передать T или любой тип, производный от T. В этом можно убедиться
 // в f2(), где тип Apple, как и прежде, можно поместить в List<Apple>, но также появилась возможность поместить Apple в List<Fruit>.
 class GenericWriting {
     static <T> void writeExact(List<T> list, T item) {
@@ -35,7 +35,8 @@ class GenericWriting {
     }
     static List<Apple> apples = new ArrayList<>();
     static List<Fruit> fruit = new ArrayList<Fruit>();
-    static void f1() { writeExact(apples, new Apple());
+    static void f1() {
+        writeExact(apples, new Apple());
 //        writeExact(fruit, new Apple()); // Ошибка:
         // Несовместимые типы: обнаружен Fruit, требуется Apple
     }
@@ -54,8 +55,8 @@ class GenericWriting {
 // Если вы работаете с обобщенным классом, параметр задается для класса при создании экземпляра этого класса. Как
 // показано в f2(), экземпляр fruitReader может прочитать Fruit из List<Fruit>, поскольку это его точный тип. Но
 // контейнер List<Apple> также должен производить объекты Fruit, а fruitReader этого не позволяет.
-// Для решения проблемы метод CovariantReader.readCovariant() получает List<? extends T>, поэтому читать т из этого
-// списка безопасно (все объекты в списке как минимум имеют тип т, а могут относиться к типу, производному от т). В
+// Для решения проблемы метод CovariantReader.readCovariant() получает List<? extends T>, поэтому читать T из этого
+// списка безопасно (все объекты в списке как минимум имеют тип T, а могут относиться к типу, производному от T). В
 // методе f3() мы видим, что теперь тип Fruit можно прочитать из List<Apple>.
 class GenericReading {
     static <T> T readExact(List<T> list) {
@@ -80,7 +81,7 @@ class GenericReading {
         Reader<Fruit> fruitReader = new Reader<Fruit>();
         Fruit f = fruitReader.readExact(fruit);
 //      Fruit а = fruitReader.readExact(apples); // Ошибка:
-    // readExact(List<Fruit>) не может // применяться к (List<Apple>).
+    // readExact(List<Fruit>) не может применяться к (List<Apple>).
     }
     static class CovariantReader<T> {
         T readCovariant(List<? extends T> list) {
