@@ -5,13 +5,13 @@ import java.io.ObjectInputStream;
 import java.util.List;
 
 /**
- *  Реализация параметризованных интерфейсов
- *  <p>
- *  Класс Hourly не компилируется, потому что стирание сокращает Payable<Employee> и Payable<Hourly>
- *  до одного класса Payable, а приведенный выше код будет означать, что один интерфейс реализуется
- *  дважды. Интересно, что при удалении обобщенных параметров из обоих мест использования Payable
- *  (как это делает компилятор при стирании) код откомпилируется.
+ *  Проблемы
  */
+
+// Класс Hourly не компилируется, потому что стирание сокращает Payable<Employee> и Payable<Hourly>
+// до одного класса Payable, а приведенный выше код будет означать, что один интерфейс реализуется
+// дважды. Интересно, что при удалении обобщенных параметров из обоих мест использования Payable
+// (как это делает компилятор при стирании) код откомпилируется.
 public interface Payable<T> {}
 
 class Employee2 implements Payable<Employee2> {}
@@ -65,4 +65,45 @@ class ClassCasting {
 //        List<Widget> lwl = List<Widget>.class.cast(in.readObject());
         List<Widget> lw2 = List.class.cast(in.readObject());
     }
+}
+
+// Перегрузка метода порождает идентичную сигнатуру типа из-за стирания.
+// Вместо этого необходимо явно указать имена методов, если стертые аргументы не
+// позволяют получить уникальный список аргументов:
+class UseList<W,T> {
+//    void f(List<T> v) {}
+    void f(List<W> v) {}
+}
+
+class UseList2<W,T> {
+    void fl(List<T> v) {}
+    void f2(List<W> v) {}
+}
+
+// Перехват интерфейса базовым классом
+class ComparablePet implements Comparable<ComparablePet> {
+    public int compareTo(ComparablePet arg) { return 0; }
+}
+
+// Есть смысл сузить тип, с которым может сравниваться субкласс ComparablePet.
+// Например, Cat может сравниваться только с другими объектами Cat.
+// К сожалению, это решение не сработает. Когда для Comparable устанавливается
+// аргумент ComparablePet, ни один реализующий класс не может сравниваться ни с
+// чем, кроме ComparablePet:
+//class Cat extends ComparablePet implements Comparable<Cat> {
+    // Ошибка: Comparable не может наследоваться
+    // с разными аргументами: <Cat> and <Pet>
+//    public int compareTo(Cat arg) { return 0; }
+//}
+
+// Hamster показывает, что возможно повторно реализовать интерфейс, присутствующий в
+// ComparablePet, — при условии его точного совпадения, включая параметры-типы.
+class Hamster extends ComparablePet implements Comparable<ComparablePet> {
+    public int compareTo(ComparablePet arg) { return 0; }
+}
+
+// Однако это ничем не отличается от переопределения методов базового класса, как
+// видно на примере Gecko.
+class Gecko extends ComparablePet {
+    public int compareTo(ComparablePet arg) { return 0; }
 }
