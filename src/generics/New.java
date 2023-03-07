@@ -32,9 +32,9 @@ public class New {
 // параметров обобщения.
 class SimplerPets {
     public static void main(String[] args) {
-        Map<Person, List<? extends Pet>> petPeople = new HashMap<Person, List<? extends Pet>>();
+        Map<Person, List<? extends Pet2>> petPeople = new HashMap<Person, List<? extends Pet2>>();
 
-        Map<Person, List<? extends Pet>> petPeopleTwo = New.map();
+        Map<Person, List<? extends Pet2>> petPeopleTwo = New.map();
         // Остальной код остается без изменений...
     }
 }
