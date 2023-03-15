@@ -16,34 +16,19 @@ package generics;
 
 interface Performs {
     void speak();
-
     void sit();
 }
 
 class PerformingDog extends Dog implements Performs {
-    public void speak() {
-        System.out.println("Woof!");
-    }
-
-    public void sit() {
-        System.out.println("Sitting");
-    }
-
-    public void reproduce() {
-    }
+    public void speak() { System.out.println("Woof!"); }
+    public void sit() { System.out.println("Sitting"); }
+    public void reproduce() { }
 }
 
 class Robot implements Performs {
-    public void speak() {
-        System.out.println("Click!");
-    }
-
-    public void sit() {
-        System.out.println("Clank!");
-    }
-
-    public void oilChange() {
-    }
+    public void speak() { System.out.println("Click!"); }
+    public void sit() { System.out.println("Clank!"); }
+    public void oilChange() { }
 }
 
 class Communicate {
