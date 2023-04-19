@@ -5,8 +5,6 @@ import java.util.Random;
 
 /**
  *  Многомерные массивы
- *  <p>
- *
  */
 public class MultidimensionalPrimitiveArray {
     public static void main(String[] args) {
