@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+// Так как у всех питомцев в этом примере есть имена, они сортируются сначала по типу,
+// затем по имени внутри типа.
 public class Individual implements Comparable<Individual> {
     private static long counter = 0;
     private final long id = counter++;
