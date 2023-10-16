@@ -25,12 +25,12 @@ public class SimpleIteration {
         Iterator<Pet> it = pets.iterator();
         while (it.hasNext()) {                              // проверяет есть ли в списке следующий элемент
             Pet p = it.next();                              // возвращает следующий элемент в списке
-            System.out.printf(p.id + " " + p + " ");
+            System.out.printf(p.id() + " " + p + " ");
         }
         System.out.println();
 
         for (Pet p : pets) {
-            System.out.printf(p.id + " " + p + " ");
+            System.out.printf(p.id() + " " + p + " ");
         }
         System.out.println();
         it = pets.iterator();
@@ -47,7 +47,7 @@ class CrossContainerIteration {
     public static void display(Iterator<Pet> it) {
         while (it.hasNext()) {
             Pet p = it.next();
-            System.out.print(p.id + ":" + p + " ");
+            System.out.print(p.id() + ":" + p + " ");
         }
         System.out.println();
     }
