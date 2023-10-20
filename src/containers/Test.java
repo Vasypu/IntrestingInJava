@@ -6,6 +6,6 @@ public abstract class Test<C> {
 
     public Test(String name) { this.name = name; }
     // Метод переопределяется для разных тестов.
-    // Возвращает фактическое количество повторений теста,
+    // Возвращает фактическое количество повторений теста
     abstract int test(C container, TestParam tp);
 }

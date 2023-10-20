@@ -5,6 +5,11 @@ import arrays.Generated;
 
 import java.util.*;
 
+/**
+ *  Выбор List
+ *  <p>
+ *
+ */
 public class ListPerformance {
     static Random rand = new Random();
     static int reps = 1000;
@@ -32,22 +37,22 @@ public class ListPerformance {
                 return loops;
             }
         });
-
         tests.add(new Test<List<Integer>>("set") {
             int test(List<Integer> list, TestParam tp) {
                 int loops = tp.loops * reps;
                 int listSize = list.size();
-                for(int i = 0; i < loops; i++)
+                for (int i = 0; i < loops; i++)
                     list.set(rand.nextInt(listSize), 47);
                 return loops;
             }
         });
         tests.add(new Test<List<Integer>>("iteradd") {
-            int test(List<Integer> list, TestParam tp){
+            int test(List<Integer> list, TestParam tp) {
                 final int LOOPS = 1000000;
                 int half = list.size() / 2;
                 ListIterator<Integer> it = list.listIterator(half);
-                for (int i = 0; i < LOOPS; i++) it.add(47);
+                for (int i = 0; i < LOOPS; i++)
+                    it.add(47);
                 return LOOPS;
             }
         });
@@ -60,7 +65,7 @@ public class ListPerformance {
             }
         });
         tests.add(new Test<List<Integer>>("remove") {
-            int test(List<Integer> list, TestParam tp){
+            int test(List<Integer> list, TestParam tp) {
                 int loops = tp.loops;
                 int size = tp.size;
                 for (int i = 0; i < loops; i++) {
@@ -72,43 +77,42 @@ public class ListPerformance {
                 return loops * size;
             }
         });
-// Тестирование поведения очереди:
+        // Тестирование поведения очереди:
         qTests.add(new Test<LinkedList<Integer>>("addFirst") {
             int test(LinkedList<Integer> list, TestParam tp) {
                 int loops = tp.loops;
                 int size = tp.size;
-                for(int i = 0; i < loops; i++) {
+                for (int i = 0; i < loops; i++) {
                     list.clear();
-                    for(int j = 0; j < size; j++)
+                    for (int j = 0; j < size; j++)
                         list.addFirst(47);
                 }
                 return loops * size;
             }
         });
         qTests.add(new Test<LinkedList<Integer>>("addLast") {
-            int test (LinkedList < Integer > list, TestParam tp){
+            int test (LinkedList < Integer > list, TestParam tp) {
                 int loops = tp.loops;
                 int size = tp.size;
                 for (int i = 0; i < loops; i++) {
                     list.clear();
+                    for (int j = 0; j < size; j++)
+                        list.addLast(47);
                 }
-                for (int j = 0; j < size; j++)
-                    list.addLast(47);
-
                 return loops * size;
             }
         });
-        qTests.add(
-                new Test<LinkedList<Integer>>("rmFirst") {
-                    int test(LinkedList<Integer> list, TestParam tp){
-                        int loops=tp.loops;
-                        int size=tp.size;
-                        for(int i=0;i<loops; i++) {
+        qTests.add(new Test<LinkedList<Integer>>("rmFirst") {
+                    int test(LinkedList<Integer> list, TestParam tp) {
+                        int loops = tp.loops;
+                        int size = tp.size;
+                        for (int i = 0; i < loops; i++) {
                             list.clear();
                             list.addAll(new CountingIntegerList(size));
-                            while(list.size()>0)list.removeFirst();
+                            while(list.size() > 0)
+                                list.removeFirst();
                         }
-                        return loops*size;
+                        return loops * size;
                     }
                 });
         qTests.add(new Test<LinkedList<Integer>>("rmLast") {
@@ -118,7 +122,8 @@ public class ListPerformance {
                 for(int i = 0; i < loops; i++) {
                     list.clear();
                     list.addAll(new CountingIntegerList(size));
-                    while(list.size() > 0) list.removeLast();
+                    while(list.size() > 0)
+                        list.removeLast();
                 }
                 return loops * size;
             }
@@ -155,8 +160,7 @@ public class ListPerformance {
             };
             arrayTest.setHeadline("Array as List");
             arrayTest.timedTest();
-            Tester.defaultParams = TestParam.array(
-                    10, 5000, 100, 5000, 1000, 1000, 10000, 200);
+            Tester.defaultParams = TestParam.array(10, 5000, 100, 5000, 1000, 1000, 10000, 200);
             if (args.length > 0)
                 Tester.defaultParams = TestParam.array(args);
             ListTester.run(new ArrayList<Integer>(), tests);
