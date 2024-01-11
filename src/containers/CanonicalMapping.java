@@ -58,5 +58,10 @@ public class CanonicalMapping {
             map.put(k, v);
         }
         System.gc();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
