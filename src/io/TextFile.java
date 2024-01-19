@@ -5,20 +5,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeSet;
 
+/**
+ *  Средства чтения и записи файлов
+ *  <p>
+ *  Конструктор использует метод read() для преобразования файла в String, после чего вызывает метод String.split(),
+ *  чтобы разбить результат по символам новой строки (если вы будете часто использовать этот класс, то, возможно,
+ *  захотите переписать этот конструктор для повышения эффективности). Увы, соответствующего метода для слияния строк
+ *  нет, так что придется для записи строк обойтись нестатическим методом write().
+ */
 public class TextFile extends ArrayList<String> {
     // Чтение всего файла как одной строки:
     public static String read(String fileName) {
         StringBuilder sb = new StringBuilder();
         try {
-            BufferedReader in = new BufferedReader(new FileReader(new File(fileName).getAbsoluteFile()));
-            try {
+            try (BufferedReader in = new BufferedReader(new FileReader(new File(fileName).getAbsoluteFile()))) {
                 String s;
-                while((s = in.readLine()) != null) {
+                while ((s = in.readLine()) != null) {
                     sb.append(s);
                     sb.append("\n");
                 }
-            } finally {
-                in.close();
             }
         } catch(IOException e) {
             throw new RuntimeException(e);
@@ -28,11 +33,8 @@ public class TextFile extends ArrayList<String> {
     // Запись файла одним вызовом метода:
     public static void write(String fileName, String text) {
         try {
-            PrintWriter out = new PrintWriter(new File(fileName).getAbsoluteFile());
-            try {
+            try (PrintWriter out = new PrintWriter(new File(fileName).getAbsoluteFile())) {
                 out.print(text);
-            } finally {
-                out.close();
             }
         } catch(IOException e) {
             throw new RuntimeException(e);
@@ -49,12 +51,9 @@ public class TextFile extends ArrayList<String> {
 
     public void write(String fileName) {
         try {
-            PrintWriter out = new PrintWriter(new File(fileName).getAbsoluteFile());
-            try {
-                for(String item : this)
+            try (PrintWriter out = new PrintWriter(new File(fileName).getAbsoluteFile())) {
+                for (String item : this)
                     out.println(item);
-            } finally {
-                out.close();
             }
         } catch(IOException e) {
             throw new RuntimeException(e);
