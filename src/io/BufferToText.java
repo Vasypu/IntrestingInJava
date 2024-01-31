@@ -5,7 +5,16 @@ import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
+import java.util.Iterator;
+import java.util.SortedMap;
 
+/**
+ *  Преобразование данных
+ *  <p>
+ *  Байтовый буфер ByteBuffer можно представить в виде символьного буфера CharBuffer, это делает метод asCharBuffer().
+ *  Буфер содержит обычные байты, следовательно, для превращения их в символы мы должны либо кодировать их по мере
+ *  помещения в буфер (так, чтобы они имели смысл при их извлечении), либо декодировать их при извлечении из буфера.
+ */
 public class BufferToText {
     private static final int BSIZE = 1024;
     public static void main(String[] args) throws Exception {
@@ -45,5 +54,26 @@ public class BufferToText {
         fc.read(buff);
         buff.flip();
         System.out.println(buff.asCharBuffer());
+    }
+}
+
+// Вывод кодировок и их псевдонимов
+class AvailableCharSets {
+    public static void main(String[] args) {
+        SortedMap<String,Charset> charSets = Charset.availableCharsets();
+        Iterator<String> it = charSets.keySet().iterator();
+        while(it.hasNext()) {
+            String csName = it.next();
+            System.out.print(csName);
+            Iterator aliases = charSets.get(csName).aliases().iterator();
+            if(aliases.hasNext())
+                System.out.print(": ");
+            while(aliases.hasNext()) {
+                System.out.print(aliases.next());
+                if (aliases.hasNext())
+                    System.out.print(", ");
+            }
+            System.out.println();
+        }
     }
 }
