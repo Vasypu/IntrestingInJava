@@ -23,8 +23,6 @@ import java.util.concurrent.TimeUnit;
  *  Метод lock() ждет до тех пор, пока не удастся получить объект блокировки, или поток, в котором этот метод был вызван,
  *  не будет прерван, или же пока не будет закрыт канал, для которого был вызван метод lock(). Блокировка снимается методом
  *  FileChannel.release()
- *  <p>
- *
  */
 public class FileLocking {
     public static void main(String[] args) throws Exception {
